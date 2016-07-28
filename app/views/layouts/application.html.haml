@@ -1,0 +1,39 @@
+!!!
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+    %title= @page_title || "Make Mine Count"
+
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "vendor", 'data-turbolinks-track' => "reload"
+    = csrf_meta_tags
+
+  %body
+    .top-bar
+      .top-bar-left
+        %ul.menu
+          %li= link_to "Make Mine Count", root_path
+      .top-bar-right
+        %ul.menu
+          - if user_signed_in?
+            %li= link_to "Sign out", destroy_user_session_path
+          - else
+            %li= link_to "Sign up", new_user_registration_path
+            %li= link_to "Sign in", new_user_session_path
+
+          %li= link_to "About", about_path
+
+    -# flash notifications
+    - alert_mappings = {"info" => "primary", "notice" => "primary", "error" => "alert"}
+    - flash.each do |k, v|
+      .callout{class: [alert_mappings[k], k], data: {closable: true}}
+        = v
+        %button.close-button(aria-label="Dismiss alert" type="button" data-close)
+          %span(aria-hidden="true") &times;
+
+    .row.columns
+      = yield
+
+    = javascript_include_tag "application", 'data-turbolinks-track' => "reload"

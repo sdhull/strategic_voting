@@ -1,0 +1,42 @@
+%h2 Get Started
+
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  .row
+    .columns.small-12
+      = devise_error_messages!
+
+  .row
+    .columns.small-12
+      = f.label :email do
+        Email
+        = f.email_field :email, autofocus: true, "aria-describedby" => "emailHelp"
+      %p.help-text#emailHelp This will be private. And we will never spam you or sell your info.
+
+  .row
+    .columns.small-12.medium-6
+      = f.label :password do
+        Password
+        = f.password_field :password, autocomplete: "off"
+        %p.help-text (#{ @minimum_password_length } characters minimum)
+
+    .columns.small-12.medium-6
+      = f.label :password_confirmation do
+        Password Confirmation
+        = f.password_field :password_confirmation, autocomplete: "off"
+
+  .row.callout.primary
+    .columns.small-12.medium-6
+      = f.label :state do
+        State
+        = f.select :state, State.for_select
+
+    .columns.small-12.medium-6
+      = f.label :desired_candidate do
+        Who did you want to vote for?
+        = f.select :desired_candidate, candidates, prompt: "Choose a Candidate"
+
+  .row.actions
+    .columns.small-12
+      = f.submit "Create Account", class: "button primary radius large expanded"
+
+= render "devise/shared/links"
