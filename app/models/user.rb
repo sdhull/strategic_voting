@@ -7,6 +7,12 @@ class User < ApplicationRecord
   validates :email, email_format: {message: "please enter a valid email."}
   validate :unique_email
 
+  belongs_to :match, class_name: "User", optional: true
+
+  def matched?
+    match_id?
+  end
+
   private
 
   def unique_email
