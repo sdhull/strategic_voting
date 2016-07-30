@@ -12,6 +12,9 @@
 //
 //= require_tree .
 
-$(document).on("ready", "turbolinks:load", function(){
+var ready = function(event){
+  console.log("init called");
   $(document).foundation();
-});
+};
+
+$(document).on("turbolinks:load", ready);
