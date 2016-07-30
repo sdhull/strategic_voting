@@ -24,5 +24,7 @@ module StrategicVoting
     config.assets.precompile += %w(
       vendor
     )
+
+    config.active_job.queue_adapter = :sucker_punch
   end
 end
