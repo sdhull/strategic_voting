@@ -16,14 +16,17 @@
         %ul.menu
           %li= link_to "Make Mine Count", root_path
       .top-bar-right
-        %ul.menu
+        %ul.menu.dropdown(data-dropdown-menu data-click-open="true" data-disable-hover="true")
+          %li= link_to "About", about_path
           - if user_signed_in?
-            %li= link_to "Sign out", destroy_user_session_path
+            %li.is-dropdown-submenu-parent
+              = link_to current_user.name, "#"
+              %ul.menu
+                %li= link_to "Account", edit_user_registration_path
+                %li= link_to "Sign Out", destroy_user_session_path
           - else
             %li= link_to "Sign up", new_user_registration_path
             %li= link_to "Sign in", new_user_session_path
-
-          %li= link_to "About", about_path
 
     -# flash notifications
     - alert_mappings = {"info" => "primary", "notice" => "primary", "error" => "alert"}

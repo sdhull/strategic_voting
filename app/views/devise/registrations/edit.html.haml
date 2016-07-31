@@ -1,26 +1,38 @@
-%h2 Edit Your Account
+%h2 Your Account
 
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+.row
+  .columns.small-6.medium-3
+    %dl.callout.primary
+      %dt State:
+      %dd= current_user.state
+  .columns.small-6.medium-3.end
+    %dl.callout.primary
+      %dt Candidate:
+      %dd= current_user.desired_candidate
+
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f|
   .row
     .columns.small-12
       = devise_error_messages!
 
   .row
-    .columns.small-12
-      = f.label :email
-      = f.email_field :email, autofocus: true
+    .columns.small-12.medium-6
+      = f.label :name
+      = f.email_field :name, autofocus: true
 
+    .columns.small-12.medium-6
+      = f.label :email
+      = f.email_field :email
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     .callout.warning Currently waiting confirmation for: #{resource.unconfirmed_email}
 
   .row
-    .columns.small-12
+    .columns.small-12.medium-6
       = f.label :password, "New password"
       = f.password_field :password, autocomplete: "off"
       %p.help-text (leave blank if you don't want to change it)
 
-  .row
-    .columns.small-12
+    .columns.small-12.medium-6
       = f.label :password_confirmation, "New password confirmation"
       = f.password_field :password_confirmation, autocomplete: "off"
 
@@ -32,12 +44,6 @@
 
   .row.actions
     .columns.small-12
-      = f.submit "Update"
-
-%h3 Cancel my account
-
-%p
-  Unhappy?
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
+      = f.submit "Update", class: "button"
 
 = link_to "Back", :back

@@ -14,7 +14,8 @@
 
 var ready = function(event){
   console.log("init called");
-  $(document).foundation();
+  Foundation.reInit();
 };
+$(document).foundation();
 
 $(document).on("turbolinks:load", ready);
