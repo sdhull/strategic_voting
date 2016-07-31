@@ -18,8 +18,10 @@ class User < ApplicationRecord
   def unique_email
     if term = email.match(/.*\+/)
       term = "#{term[0]}%"
-      if User.where("email LIKE ?", term).exists?
-        errors.add :email, "has been taken."
+      if user = User.where("email LIKE ?", term).last
+        if user != self
+          errors.add :email, "has been taken."
+        end
       end
     end
   end
