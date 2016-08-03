@@ -7,10 +7,11 @@
     %title= @page_title || "Make Mine Count"
 
     = stylesheet_link_tag    "application"
-    = javascript_include_tag "vendor", 'data-turbolinks-track' => "reload"
+    = javascript_include_tag "vendor"
     = csrf_meta_tags
 
   %body
+    = yield :above_menu
     .top-bar
       .row.columns
         = link_to root_path do

@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require jquery.waypoints
+//= require waypoints.sticky
+//= require stellar
+
+jQuery = $;

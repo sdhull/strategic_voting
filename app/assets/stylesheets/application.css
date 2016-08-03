@@ -15,3 +15,11 @@
  *= require foundation_and_overrides
 
  */
+
+img.logo { max-height: 40px; }
+.content { min-height: 100vh; }
+.top-bar { width: 100%; }
+.stuck { position: fixed; top: 0; }
+.right { float: right; }
+.left { float: left; }
+.top-bar { padding-left: 0px; }

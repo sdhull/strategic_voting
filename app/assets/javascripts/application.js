@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery.waypoints
-//= require waypoints.sticky
 //= require_tree .
 
 var ready = function(event){
@@ -20,6 +18,7 @@ var ready = function(event){
   var sticky = new Waypoint.Sticky({
     element: $('.top-bar')[0]
   });
+  $.stellar({hideDistantElements: false});
 };
 
 $(document).on("turbolinks:load", ready);
