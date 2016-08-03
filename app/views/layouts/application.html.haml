@@ -15,7 +15,7 @@
     .top-bar
       .row.columns
         = link_to root_path do
-          = image_tag "logo", class: "logo"
+          = image_tag "logo.png", class: "logo"
         %ul.menu.dropdown.right(data-dropdown-menu data-click-open="true" data-disable-hover="true")
           - if user_signed_in?
             %li.is-dropdown-submenu-parent
