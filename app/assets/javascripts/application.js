@@ -10,12 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery.waypoints
+//= require waypoints.sticky
 //= require_tree .
 
 var ready = function(event){
-  console.log("init called");
-  Foundation.reInit();
+  //Foundation.reInit();
+  $(document).foundation();
+  var sticky = new Waypoint.Sticky({
+    element: $('.top-bar')[0]
+  });
 };
-$(document).foundation();
 
 $(document).on("turbolinks:load", ready);

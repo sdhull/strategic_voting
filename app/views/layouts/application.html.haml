@@ -12,12 +12,10 @@
 
   %body
     .top-bar
-      .top-bar-left
-        %ul.menu
-          %li= link_to "Make Mine Count", root_path
-      .top-bar-right
-        %ul.menu.dropdown(data-dropdown-menu data-click-open="true" data-disable-hover="true")
-          %li= link_to "About", about_path
+      .row.columns
+        = link_to root_path do
+          = image_tag "logo", class: "logo"
+        %ul.menu.dropdown.right(data-dropdown-menu data-click-open="true" data-disable-hover="true")
           - if user_signed_in?
             %li.is-dropdown-submenu-parent
               = link_to current_user.name, "#"
@@ -25,8 +23,7 @@
                 %li= link_to "Account", edit_user_registration_path
                 %li= link_to "Sign Out", destroy_user_session_path
           - else
-            %li= link_to "Sign up", new_user_registration_path
-            %li= link_to "Sign in", new_user_session_path
+            %li= link_to "Get Started", new_user_registration_path
 
     -# flash notifications
     - alert_mappings = {"info" => "primary", "notice" => "primary", "error" => "alert"}
@@ -36,7 +33,12 @@
         %button.close-button(aria-label="Dismiss alert" type="button" data-close)
           %span(aria-hidden="true") &times;
 
-    .row.columns
+    .row.columns.content
       = yield
+    .menu-centered
+      %ul.menu
+        %li= link_to "About", about_path
+        %li= link_to "Privacy Policy", privacy_policy_path
+        %li= link_to "Terms of Service", terms_of_service_path
 
     = javascript_include_tag "application", 'data-turbolinks-track' => "reload"
