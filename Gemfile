@@ -6,6 +6,7 @@ gem 'active_hash'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'devise-async', "~> 0.10.2", github: "mhfs/devise-async", branch: "devise-4.x"
+gem 'foundation-icons-sass-rails'
 gem 'foundation-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'

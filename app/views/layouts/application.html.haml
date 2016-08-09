@@ -7,7 +7,7 @@
     %title= @page_title || "Make Mine Count"
 
     = stylesheet_link_tag    "application"
-    = javascript_include_tag "vendor"
+    = javascript_include_tag "vendor", "application", "data-turbolinks-track" => "reload"
     = csrf_meta_tags
 
   %body
@@ -24,7 +24,7 @@
                 %li= link_to "Account", edit_user_registration_path
                 %li= link_to "Sign Out", destroy_user_session_path
           - else
-            %li= link_to "Get Started", new_user_registration_path
+            %li= link_to "Get Started", new_user_registration_path, class: "button"
 
     -# flash notifications
     - alert_mappings = {"info" => "primary", "notice" => "primary", "error" => "alert"}
@@ -41,5 +41,3 @@
         %li= link_to "About", about_path
         %li= link_to "Privacy Policy", privacy_policy_path
         %li= link_to "Terms of Service", terms_of_service_path
-
-    = javascript_include_tag "application", 'data-turbolinks-track' => "reload"
