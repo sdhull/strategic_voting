@@ -1,7 +1,6 @@
-- content_for :above_menu do
-  .hero
-    = image_tag "hero.jpg", data: {stellar_ratio: 0.5}
-    = image_tag "everybody_wins.png", class: "everybody", data: {stellar_ratio: 2}
+.hero
+  = image_tag "hero-combined.jpg"
+
 %h2 Make Your Voice Heard. Defeat Donald.
 
 %p
@@ -20,10 +19,12 @@
 %h3 Strategic Voting.
 
 .row
-  .columns.small-12.medium-6.end
+  .columns.small-12.medium-6
     %dl.callout.primary
       %dt Hillary Voters:
       %dd Teleport your vote to a state where it <em data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Voting for Hillary in an uncontested state won't help her win. Voting in swing states will.">matters</em>.
+  .columns.small-12.medium-6.end
+    %dl.callout.secondary
       %dt Jill Stein/Bernie Sanders/Gary Johnson Voters:
       %dd Teleport your vote to a state where it won't indirectly help Trump win the election.
 

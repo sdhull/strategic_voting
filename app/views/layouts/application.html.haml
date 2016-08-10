@@ -11,7 +11,6 @@
     = csrf_meta_tags
 
   %body
-    = yield :above_menu
     .top-bar
       .row.columns
         = link_to root_path do
@@ -24,7 +23,7 @@
                 %li= link_to "Account", edit_user_registration_path
                 %li= link_to "Sign Out", destroy_user_session_path
           - else
-            %li= link_to "Get Started", new_user_registration_path, class: "button"
+            %li= link_to "Get Started", new_user_registration_path, class: "button hide-for-small-only"
 
     -# flash notifications
     - alert_mappings = {"info" => "primary", "notice" => "primary", "error" => "alert"}

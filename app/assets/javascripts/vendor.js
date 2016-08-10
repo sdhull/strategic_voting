@@ -16,6 +16,5 @@
 //= require turbolinks
 //= require jquery.waypoints
 //= require waypoints.sticky
-//= require stellar
 
 jQuery = $;

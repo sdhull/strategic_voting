@@ -18,7 +18,6 @@ var ready = function(event){
   var sticky = new Waypoint.Sticky({
     element: $('.top-bar')[0]
   });
-  $.stellar({hideDistantElements: false});
 };
 
 $(document).on("turbolinks:load", ready);

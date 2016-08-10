@@ -43,6 +43,8 @@
 
   .row.actions
     .columns.small-12
-      = f.submit "Create Account", class: "button primary radius large expanded"
+      = f.submit "Create Account", class: "button primary radius large expanded", "aria-describedby" => "submitHelp"
+      %p.text-center.help-text#submitHelp
+        By clicking "Create Account" you agree to our #{link_to "Terms of Service", terms_of_service_path}.
 
 = render "devise/shared/links"
