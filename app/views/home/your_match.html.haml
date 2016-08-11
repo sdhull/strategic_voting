@@ -1,6 +1,7 @@
-%h1 You've Been Matched!
+.row.columns.content
+  %h1 You've Been Matched!
 
-%p Congratulations! You're well on your way to helping defeat Trump.
-%p You've been matched with #{@match.name} from #{@match.state}!
+  %p Congratulations! You're well on your way to helping defeat Trump.
+  %p You've been matched with #{@match.name} from #{@match.state}!
 
-%p So come November, you will vote for #{@match.desired_candidate} and #{@match.name} will vote for #{current_user.desired_candidate}.
+  %p So come November, you will vote for #{@match.desired_candidate} and #{@match.name} will vote for #{current_user.desired_candidate}.

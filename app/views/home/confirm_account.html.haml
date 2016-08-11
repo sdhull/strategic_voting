@@ -1,4 +1,10 @@
-%h1 Confirm Your Account to Continue
+.row.columns.content
+  %h1 Confirm Your Account to Continue
 
-%p You should have receied an email to confirm your account. Please find that email and follow the link to confirm your account.
-%p If you did not receive that email, #{link_to "click here", user_confirmation_path(user: {email: current_user.email}), method: :post} to resend it.
+  %p
+    You should have receied an email to confirm your account.
+    Please find that email and follow the link to confirm your account.
+  %p
+    If you did not receive that email,
+    #{link_to "click here", user_confirmation_path(user: {email: current_user.email}), method: :post}
+    to resend it.

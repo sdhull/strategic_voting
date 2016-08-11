@@ -1,39 +1,41 @@
 .hero
-  = image_tag "hero-combined.jpg"
+  = image_tag "hero.jpg"
+  = image_tag "everybody_wins.png", class: "everybody"
 
-%h2 Make Your Voice Heard. Defeat Donald.
+.row.columns.content
+  %h2 Make Your Voice Heard. Defeat Donald.
 
-%p
-  Many progressives don’t want to endorse Clinton, but we all want to stop Trump.
+  %p
+    Many progressives don’t want to endorse Clinton, but we all want to stop Trump.
 
-.row
-  .columns.small-12.medium-6.end
-    %ul.no-bullet
-      %li
-        %span.fi-checkbox
-        Hillary Clinton wins critical swing states.
-      %li
-        %span.fi-checkbox
-        3rd Party candidates receive more votes overall, giving them a better chance of reaching critical federal thresholds.
+  .row
+    .columns.small-12.medium-6.end
+      %ul.no-bullet
+        %li
+          %span.fi-checkbox
+          Hillary Clinton wins critical swing states.
+        %li
+          %span.fi-checkbox
+          3rd Party candidates receive more votes overall, giving them a better chance of reaching critical federal thresholds.
 
-%h3 Strategic Voting.
+  %h3 Strategic Voting.
 
-.row
-  .columns.small-12.medium-6
-    %dl.callout.primary
-      %dt Hillary Voters:
-      %dd Teleport your vote to a state where it <em data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Voting for Hillary in an uncontested state won't help her win. Voting in swing states will.">matters</em>.
-  .columns.small-12.medium-6.end
-    %dl.callout.secondary
-      %dt Jill Stein/Gary Johnson Voters:
-      %dd Teleport your vote to a state where it won't indirectly help Trump win the election.
+  .row
+    .columns.small-12.medium-6
+      %dl.callout.primary
+        %dt Hillary Voters:
+        %dd Teleport your vote to a state where it <em data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Voting for Hillary in an uncontested state won't help her win. Voting in swing states will.">matters</em>.
+    .columns.small-12.medium-6.end
+      %dl.callout.secondary
+        %dt Jill Stein/Gary Johnson Voters:
+        %dd Teleport your vote to a state where it won't indirectly help Trump win the election.
 
-%p
-  By strategically trading votes with voters in other states, we can have our cake and eat it too.
+  %p
+    By strategically trading votes with voters in other states, we can have our cake and eat it too.
 
-%h3 Everybody Wins. Except Trump.
+  %h3 Everybody Wins. Except Trump.
 
-%p 3rd party candidates get more votes, and Hillary Clinton wins.
+  %p 3rd party candidates get more votes, and Hillary Clinton wins.
 
-.text-centered
-  = link_to "Get Started", new_user_registration_path, class: "button large"
+  .text-centered
+    = link_to "Get Started", new_user_registration_path, class: "button large"

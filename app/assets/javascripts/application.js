@@ -15,9 +15,6 @@
 var ready = function(event){
   //Foundation.reInit();
   $(document).foundation();
-  var sticky = new Waypoint.Sticky({
-    element: $('.top-bar')[0]
-  });
 };
 
 $(document).on("turbolinks:load", ready);
