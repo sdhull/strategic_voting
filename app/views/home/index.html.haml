@@ -3,22 +3,21 @@
   = image_tag "everybody_wins.png", class: "everybody"
 
 .row.columns.content
-  %h2 Make Your Voice Heard. Defeat Donald.
+  %h1 Make Your Voice Heard. Defeat Donald.
 
-  %p
+  %p.xlarge-txt.subheader
     Many progressives don’t want to endorse Clinton, but we all want to stop Trump.
+
+  .text-center
+    = link_to "Count me in!", new_user_registration_path, class: "button large"
 
   .row
     .columns.small-12.medium-6.end
-      %ul.no-bullet
+      %ul.checkboxes
         %li
-          %span.fi-checkbox
           Hillary Clinton wins critical swing states.
         %li
-          %span.fi-checkbox
           3rd Party candidates receive more votes overall, giving them a better chance of reaching critical federal thresholds.
-
-  %h3 Strategic Voting.
 
   .row
     .columns.small-12.medium-6
@@ -30,12 +29,14 @@
         %dt Jill Stein/Gary Johnson Voters:
         %dd Teleport your vote to a state where it won't indirectly help Trump win the election.
 
+  .row
+    .columns.small-12.medium-6
+      = image_tag "teleport-your-vote.png"
+
   %p
     By strategically trading votes with voters in other states, we can have our cake and eat it too.
+    3rd party candidates get more votes, and Hillary Clinton wins.
 
-  %h3 Everybody Wins. Except Trump.
+  .row.columns.small-12.medium-6
+    = image_tag "everybody-wins-black.png"
 
-  %p 3rd party candidates get more votes, and Hillary Clinton wins.
-
-  .text-centered
-    = link_to "Get Started", new_user_registration_path, class: "button large"

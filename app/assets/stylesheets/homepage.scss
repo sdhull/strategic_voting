@@ -1,3 +1,5 @@
+@import "settings";
+
 .hero {
   position: relative;
   .trump {
@@ -8,5 +10,20 @@
     left: 20px;
     bottom: 30%;
     width: 50%;
+  }
+}
+
+ul.checkboxes {
+  list-style-type: none;
+  position: relative;
+  margin-left: 1.75rem;
+  li:before {
+    position: absolute;
+    left: -25px;
+    font-size: 175%;
+    font-family: "foundation-icons";
+    color: map-get($foundation-palette, tertiary);
+    content: "\f127";
+    margin-top: -10px;
   }
 }

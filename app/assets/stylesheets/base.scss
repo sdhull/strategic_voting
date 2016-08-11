@@ -1,10 +1,42 @@
+@import "settings";
+
 img.logo { max-height: 40px; }
-.content { min-height: 100vh; }
 .right { float: right; }
 .left { float: left; }
+
+.content {
+  min-height: 100vh;
+  margin-top: 10px;
+}
 
 .top-bar {
   width: 100%;
   padding-left: 0px;
   z-index: 100;
+}
+
+.small-txt {
+  font-size: 75%;
+}
+
+.small-txt {
+  font-size: 75%;
+}
+.medium-txt {
+  font-size: 100%;
+}
+.large-txt {
+  font-size: 125%;
+}
+.xlarge-txt {
+  font-size: 150%;
+}
+.xxlarge-txt {
+  font-size: 175%;
+}
+
+@each $name, $value in $foundation-palette {
+  .color-#{$name} {
+    color: $value;
+  }
 }

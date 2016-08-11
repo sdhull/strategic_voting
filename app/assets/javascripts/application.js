@@ -15,6 +15,7 @@
 var ready = function(event){
   //Foundation.reInit();
   $(document).foundation();
+  console.log("init");
 };
 
 $(document).on("turbolinks:load", ready);
