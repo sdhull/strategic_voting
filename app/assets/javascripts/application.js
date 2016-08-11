@@ -13,9 +13,12 @@
 //= require_tree .
 
 var ready = function(event){
+  console.log("init");
   //Foundation.reInit();
   $(document).foundation();
-  console.log("init");
+  window.sticky = new Waypoint.Sticky({
+    element: $('.top-bar')[0]
+  });
 };
 
 $(document).on("turbolinks:load", ready);

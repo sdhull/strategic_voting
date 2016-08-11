@@ -12,20 +12,19 @@
     = csrf_meta_tags
 
   %body
-    %div(data-sticky-container)
-      .top-bar(data-sticky data-options="marginTop:0;")
-        .row.columns
-          = link_to root_path do
-            = image_tag "logo.png", class: "logo"
-          %ul.menu.dropdown.right(data-dropdown-menu data-click-open="true" data-disable-hover="true")
-            - if user_signed_in?
-              %li.is-dropdown-submenu-parent
-                = link_to current_user.name, "#"
-                %ul.menu
-                  %li= link_to "Account", edit_user_registration_path
-                  %li= link_to "Sign Out", destroy_user_session_path
-            - else
-              %li= link_to "Count Me In!", new_user_registration_path, class: "button hide-for-small-only"
+    .top-bar
+      .row.columns
+        = link_to root_path do
+          = image_tag "logo.png", class: "logo"
+        %ul.menu.dropdown.right(data-dropdown-menu data-click-open="true" data-disable-hover="true")
+          - if user_signed_in?
+            %li.is-dropdown-submenu-parent
+              = link_to current_user.name, "#"
+              %ul.menu
+                %li= link_to "Account", edit_user_registration_path
+                %li= link_to "Sign Out", destroy_user_session_path
+          - else
+            %li= link_to "Count Me In!", new_user_registration_path, class: "button hide-for-small-only"
 
     -# flash notifications
     - alert_mappings = {"info" => "primary", "notice" => "primary", "error" => "alert"}
