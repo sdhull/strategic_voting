@@ -10,17 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require foundation_and_overrides
  *= require_tree .
  *= require_self
- *= require foundation_and_overrides
 
  */
 
-img.logo { max-height: 40px; }
-.content { min-height: 100vh; }
-.top-bar { width: 100%; }
-.stuck { position: fixed; top: 0; }
-.top-bar.stuck { }
-.right { float: right; }
-.left { float: left; }
-.top-bar { padding-left: 0px; z-index: 100; }
