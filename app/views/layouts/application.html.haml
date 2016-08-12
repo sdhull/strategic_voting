@@ -11,6 +11,15 @@
     = javascript_include_tag "vendor", "application", "data-turbolinks-track" => "reload"
     = csrf_meta_tags
 
+    %meta(property="fb:app_id" content="173652306389327")
+    %meta(property="og:type" content="article")
+    %meta(property="og:url" content="#{request.original_url}")
+    %meta(property="og:title" content="Make Mine Count")
+    %meta(property="og:image" content="#{image_url 'hero-combined.jpg'}")
+    %meta(property="og:image:width" content="1500")
+    %meta(property="og:image:height" content="989")
+    %meta(property="og:description" content="Using strategic vote swapping to simultaneously defeat Trump while supporting 3rd parties.")
+
     :javascript
       window.twttr = (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],
@@ -53,8 +62,13 @@
           %span(aria-hidden="true") &times;
 
     = yield
+
     .menu-centered
       %ul.menu
+        %li.menu-text= link_to "Tweet", "https://twitter.com/intent/tweet?#{tweet_params.to_query}", class: "twitter-share-button", data: {size: "large"}
+        %li.menu-text
+          .fb-share-button(data-href="https://www.makeminecount.org" data-layout="button" data-size="large" data-mobile-iframe="true")
+            = link_to "Share", "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.makeminecount.org%2F&amp;src=sdkpreparse", class: "fb-xfbml-parse-ignore", target: "_blank"
         %li= link_to "About", about_path
         %li= link_to "Privacy Policy", privacy_policy_path
         %li= link_to "Terms of Service", terms_of_service_path

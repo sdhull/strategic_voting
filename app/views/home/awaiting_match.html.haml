@@ -9,3 +9,12 @@
     Until then, share this site to spread the word. Educate your friends
     &amp; family about strategic voting, and how we're organizing to help
     keep Trump out of the White House.
+
+  %p
+    - share_params = tweet_params
+    - share_params[:text] = "I'm helping keep Trump out of the White House!"
+    = link_to "Tweet", "https://twitter.com/intent/tweet?#{share_params.to_query}", class: "twitter-share-button", data: {size: "large"}
+
+  %p
+    .fb-share-button(data-href="https://www.makeminecount.org" data-layout="button" data-size="large" data-mobile-iframe="true")
+      = link_to "Share", "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.makeminecount.org%2F&amp;src=sdkpreparse", class: "fb-xfbml-parse-ignore", target: "_blank"

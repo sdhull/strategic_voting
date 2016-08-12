@@ -5,3 +5,12 @@
   %p You've been matched with #{@match.name} from #{@match.state}!
 
   %p So come November, you will vote for #{@match.desired_candidate} and #{@match.name} will vote for #{current_user.desired_candidate}.
+
+  %p
+    - share_params = tweet_params
+    - share_params[:text] = "I'm helping keep Trump out of the White House!"
+    = link_to "Tweet", "https://twitter.com/intent/tweet?#{share_params.to_query}", class: "twitter-share-button", data: {size: "large"}
+
+  %p
+    .fb-share-button(data-href="https://www.makeminecount.org" data-layout="button" data-size="large" data-mobile-iframe="true")
+      = link_to "Share", "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.makeminecount.org%2F&amp;src=sdkpreparse", class: "fb-xfbml-parse-ignore", target: "_blank"
