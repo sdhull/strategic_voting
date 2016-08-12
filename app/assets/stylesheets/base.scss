@@ -41,3 +41,29 @@ img.logo { max-height: 40px; }
     color: $value;
   }
 }
+
+@for $i from 1 through 5 {
+  .margin-top-#{$i} {
+    margin-top: $i * 10px;
+  }
+  .margin-bottom-#{$i} {
+    margin-bottom: $i * 10px;
+  }
+  .margin-left-#{$i} {
+    margin-left: $i * 10px;
+  }
+  .margin-right-#{$i} {
+    margin-right: $i * 10px;
+  }
+  .margin-#{$i} {
+    margin: $i * 10px;
+  }
+}
+
+.button.xlarge {
+    font-size: 1.75rem;
+}
+
+.full-width {
+  width: 100%;
+}

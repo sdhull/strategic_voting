@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <defs>
+  <style>.cls-1{fill:#00aeef;}.cls-2,.cls-3{fill:#274fa2;}.cls-2{opacity:0.1;}.cls-4{fill:#ed1c24;}</style>
+ </defs>
+ <title>MMCidBOX</title>
+ <g>
+  <title>Layer 1</title>
+  <path fill="black" id="svg_159" d="m24.62,6.14a18.87,18.87 0 0 0 -18.06,13.43l13.64,0l0,-5.5a1.61,1.61 0 0 1 0.64,-1.35a1,1 0 0 1 1.23,0.12l11.73,10.94a1.79,1.79 0 0 1 0,2.46l-11.73,10.93a1,1 0 0 1 -0.69,0.29a1,1 0 0 1 -0.54,-0.17a1.61,1.61 0 0 1 -0.64,-1.35l0,-5.51l-13.64,0a18.86,18.86 0 1 0 18.06,-24.29z" class="cls-3"/>
+ </g>
+</svg>
