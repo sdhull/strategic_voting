@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'pg', '~> 0.18'
 gem 'rails', '~> 5.0.0'
+gem 'rollbar'
 gem 'sass-rails', '~> 5.0'
 gem 'sucker_punch'
 gem 'turbolinks', '~> 5'
@@ -21,6 +22,7 @@ gem 'validates_email_format_of'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'dotenv-rails'
 end
 
 group :development do
