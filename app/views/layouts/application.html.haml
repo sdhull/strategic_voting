@@ -20,25 +20,9 @@
     %meta(property="og:image:height" content="989")
     %meta(property="og:description" content="Using strategic vote swapping to simultaneously defeat Trump while supporting 3rd parties.")
 
-    :javascript
-      window.twttr = (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0],
-          t = window.twttr || {};
-        if (d.getElementById(id)) return t;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
-       
-        t._e = [];
-        t.ready = function(f) {
-          t._e.push(f);
-        };
-       
-        return t;
-      }(document, "script", "twitter-wjs"));
 
   %body
+    #fb-root
     .top-bar
       .row.columns
         = link_to root_path do

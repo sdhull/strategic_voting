@@ -1,21 +1,20 @@
-$ ->
-  loadFacebookSDK()
-  bindFacebookEvents() unless window.fbEventsBound
-
 bindFacebookEvents = ->
   $(document)
-    .on('page:fetch', saveFacebookRoot)
-    .on('page:change', restoreFacebookRoot)
-    .on('page:load', ->
+    .on('turbolinks:request-start', saveFacebookRoot)
+    .on('turbolinks:render', restoreFacebookRoot)
+    .on('turbolinks:load', ->
+      console.log "parsing XFBML"
       FB?.XFBML.parse()
     )
-  @fbEventsBound = true
+  window.fbEventsBound = true
 
 saveFacebookRoot = ->
+  console.log "saving fb root"
   if $('#fb-root').length
     @fbRoot = $('#fb-root').detach()
 
 restoreFacebookRoot = ->
+  console.log "restoring fb root"
   if @fbRoot?
     if $('#fb-root').length
       $('#fb-root').replaceWith @fbRoot
@@ -33,3 +32,6 @@ initializeFacebookSDK = ->
     status : true
     cookie : true
     xfbml  : true
+
+loadFacebookSDK()
+bindFacebookEvents() unless window.fbEventsBound
