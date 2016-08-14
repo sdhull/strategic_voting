@@ -4,7 +4,7 @@ module ApplicationHelper
       "Jill Stein",
       "Gary Johnson",
       "Hillary Clinton",
-      "Donaled Trump",
+      "Donald Trump",
       "Bernie Sanders"
     ]
   end
