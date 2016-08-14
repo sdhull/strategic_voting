@@ -26,5 +26,13 @@ module StrategicVoting
     )
 
     config.active_job.queue_adapter = :sucker_punch
+
+    if ENV["MEMCACHEDCLOUD_SERVERS"]
+      config.cache_store = :dalli_store, ENV["MEMCACHEDCLOUD_SERVERS"].split(','),
+        { username: ENV["MEMCACHEDCLOUD_USERNAME"], password: ENV["MEMCACHEDCLOUD_PASSWORD"] }
+    elsif Rails.env.development?
+      puts "dev caching"
+      config.cache_store = :dalli_store, "localhost"
+    end
   end
 end

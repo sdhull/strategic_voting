@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/eileencodes/actionpack-action_caching.git
+  revision: 20c50ad5203de3e2767e727c9a1f729e78238aae
+  branch: upgrade-to-rails-5
+  specs:
+    actionpack-action_caching (2.0.0)
+      actionpack (~> 5.x)
+
+GIT
   remote: git://github.com/mhfs/devise-async.git
   revision: 177f6363a002f7ff28f1d289c8cab7ad8d9cb8c5
   branch: devise-4.x
@@ -65,6 +73,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    dalli (2.7.6)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -210,9 +219,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack-action_caching!
   active_hash
   byebug
   coffee-rails (~> 4.2)
+  dalli
   devise
   devise-async (~> 0.10.2)!
   dotenv-rails

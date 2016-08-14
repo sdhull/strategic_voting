@@ -3,7 +3,9 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 gem 'active_hash'
+gem 'actionpack-action_caching', github: "eileencodes/actionpack-action_caching", branch: "upgrade-to-rails-5"
 gem 'coffee-rails', '~> 4.2'
+gem 'dalli'
 gem 'devise'
 gem 'devise-async', "~> 0.10.2", github: "mhfs/devise-async", branch: "devise-4.x"
 gem 'foundation-icons-sass-rails'
