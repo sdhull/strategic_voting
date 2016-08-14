@@ -13,9 +13,14 @@
 //= require_tree .
 
 var ready = function(event){
-  console.log("init");
   //Foundation.reInit();
   $(document).foundation();
+
+  // send google analytics pageview
+  if(typeof ga !== "undefined"){
+    ga('send', 'pageview');
+  }
+
   window.sticky = new Waypoint.Sticky({
     element: $('.top-bar')[0]
   });
