@@ -8,3 +8,9 @@
     If you did not receive that email,
     #{link_to "click here", user_confirmation_path(user: {email: current_user.email}), method: :post}
     to resend it.
+  .row
+    .columns.small-12.medium-8.end
+      .callout
+        %p
+          Sometimes the confirmation instructions are filtered somewhere unusual (such as your spam folder),
+          so if you don't see the email, please search your inbox.
