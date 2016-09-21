@@ -55,6 +55,9 @@
 
     = yield
 
+    .text-center.margin-top-4
+      .display-inline-block.callout.color-dark-gray
+        NOT AUTHORIZED BY ANY CANDIDATE OR CANDIDATE'S COMMITTEE
     .menu-centered
       %ul.menu
         %li.menu-text= link_to "Tweet", "https://twitter.com/intent/tweet?#{tweet_params.to_query}", class: "twitter-share-button", data: {size: "large"}
