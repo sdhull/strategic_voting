@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def after_sign_up_path_for(resource)
+    confirm_path
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:state, :desired_candidate, :name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:state, :desired_candidate, :name])
