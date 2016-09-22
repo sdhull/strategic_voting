@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+  caches_action :index, :about, :privacy_policy, :terms,
+    unless: :user_signed_in?, cache_path: lambda { |c| c.request.original_url }
+
   def index
     if user_signed_in?
       if !current_user.confirmed?
@@ -16,5 +19,11 @@ class HomeController < ApplicationController
   end
 
   def about
+  end
+
+  def privacy_policy
+  end
+
+  def terms
   end
 end
