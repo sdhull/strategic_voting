@@ -1,3 +1,8 @@
+- if flash[:registered]
+  :javascript
+    if(fbq){
+      fbq('track', 'CompleteRegistration');
+    }
 .row.columns.content
   %h1 Confirm Your Account to Continue
 
