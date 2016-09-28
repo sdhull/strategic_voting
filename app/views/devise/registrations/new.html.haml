@@ -1,3 +1,9 @@
+- if request.get?
+  :javascript
+    if(fbq){
+      fbq('track', 'InitiateCheckout');
+    }
+
 .row.columns.content
   %h2 Get Started
 
