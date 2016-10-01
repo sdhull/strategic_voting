@@ -36,6 +36,13 @@
           Password Confirmation
           = f.password_field :password_confirmation, autocomplete: "off"
 
+    .row
+      .columns.small-12.medium-6
+        = f.label :phone do
+          Phone
+          = f.telephone_field :phone, value: number_to_phone(resource.phone)
+
+
     .row.callout.primary
       .columns.small-12.medium-6
         = f.label :state do

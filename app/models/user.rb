@@ -7,11 +7,19 @@ class User < ApplicationRecord
   validates :email, email_format: {message: "please enter a valid email."}
   validate :unique_email
   validates :desired_candidate, presence: true, allow_blank: false
+  validates :phone, presence: true
+  validate :valid_phone
 
   belongs_to :match, class_name: "User", optional: true
 
   def matched?
     match_id?
+  end
+
+  # Internally store phone numbers as numbers
+  def phone=(num)
+    num.gsub!(/\D/, '')
+    super(num)
   end
 
   private
@@ -24,6 +32,13 @@ class User < ApplicationRecord
           errors.add :email, "has been taken."
         end
       end
+    end
+  end
+
+  def valid_phone
+    unless phone.length == 10 ||
+      (phone.length == 11 && phone[0] == '1')
+      errors.add :phone, "is invalid."
     end
   end
 end
