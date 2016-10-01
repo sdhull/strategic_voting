@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :email, email_format: {message: "please enter a valid email."}
   validate :unique_email
+  validates :desired_candidate, presence: true, allow_blank: false
 
   belongs_to :match, class_name: "User", optional: true
 
