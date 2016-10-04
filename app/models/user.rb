@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validate :unique_email
   validates :desired_candidate, presence: true, allow_blank: false
   validates :phone, presence: true
-  validate :valid_phone
+  validate :valid_phone, if: :phone?
 
   belongs_to :match, class_name: "User", optional: true
 
@@ -36,8 +36,9 @@ class User < ApplicationRecord
   end
 
   def valid_phone
-    unless phone.length == 10 ||
-      (phone.length == 11 && phone[0] == '1')
+    if phone.length == 10 || (phone.length == 11 && phone[0] == '1')
+      # phone is valid
+    else
       errors.add :phone, "is invalid."
     end
   end
