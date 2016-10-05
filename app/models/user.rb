@@ -7,7 +7,6 @@ class User < ApplicationRecord
   validates :email, email_format: {message: "please enter a valid email."}
   validate :unique_email
   validates :desired_candidate, presence: true, allow_blank: false
-  validates :phone, presence: true
   validate :valid_phone, if: :phone?
   after_validation :report_validation_errors_to_rollbar
 
