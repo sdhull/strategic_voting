@@ -14,14 +14,6 @@
     .columns.small-12.large-3.text-center.large-text-left.margin-top-1
       = link_to "Count me in!", new_user_registration_path, class: "button xlarge"
 
-  .row
-    .columns.small-12.medium-6.end
-      %ul.checkboxes
-        %li
-          Hillary Clinton wins critical swing states.
-        %li
-          Third-party candidates receive more votes overall, giving them a better chance of reaching critical federal thresholds.
-
   .row.collapse
     .columns.small-12.medium-8.large-6.medium-centered
       = image_tag "arrow-right.svg", class: "left left-arrow"
@@ -40,6 +32,14 @@
         %span.color-secondary TRUMP
         %span.color-tertiary WIN.
 
+   .row
+     .columns.small-12.medium-6.medium-centered.margin-top-2.margin-bottom-2
+      %p.large-txt.text-justify
+      %ul.checkboxes
+        %li
+          Hillary Clinton wins critical swing states.
+        %li
+          Third-party candidates receive more votes overall, giving them a better chance of reaching critical federal thresholds.
 
   .row
     .columns.small-12.medium-6.medium-centered.margin-top-2.margin-bottom-2
