@@ -11,6 +11,23 @@ class User < ApplicationRecord
   after_validation :report_validation_errors_to_rollbar
 
   belongs_to :match, class_name: "User", optional: true
+  belongs_to :state, foreign_key: "state", primary_key: "short_name"
+
+  def self.in_swing_state
+    joins(:state).merge(State.swing)
+  end
+
+  def self.in_uncontested_state
+    joins(:state).merge(State.uncontested)
+  end
+
+  def self.clinton
+    where(desired_candidate: "Hillary Clinton")
+  end
+
+  def self.third_party
+    where(desired_candidate: ["Jill Stein", "Gary Johnson"])
+  end
 
   def matched?
     match_id?
@@ -20,6 +37,13 @@ class User < ApplicationRecord
   def phone=(num)
     num.gsub!(/\D/, '')
     super(num)
+  end
+
+  def match_with(user)
+    User.transaction do
+      self.update_attribute :match_id, user.id
+      user.update_attribute :match_id, self.id
+    end
   end
 
   private

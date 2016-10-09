@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001151701) do
+ActiveRecord::Schema.define(version: 20161009014043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "states", force: :cascade do |t|
+    t.string   "short_name",        limit: 2
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "electoral_votes"
+    t.integer  "optimistic_win_p"
+    t.integer  "pessimistic_win_p"
+    t.integer  "nov_win_p"
+    t.integer  "win_margin"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["short_name"], name: "index_states_on_short_name", unique: true, using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",          null: false
