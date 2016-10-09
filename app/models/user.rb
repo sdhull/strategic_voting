@@ -29,6 +29,14 @@ class User < ApplicationRecord
     where(desired_candidate: ["Jill Stein", "Gary Johnson"])
   end
 
+  def self.unmatched
+    where(match_id: nil)
+  end
+
+  def self.matched
+    where("match_id IS NOT NULL")
+  end
+
   def matched?
     match_id?
   end
