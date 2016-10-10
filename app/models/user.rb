@@ -11,14 +11,14 @@ class User < ApplicationRecord
   after_validation :report_validation_errors_to_rollbar
 
   belongs_to :match, class_name: "User", optional: true
-  belongs_to :state, foreign_key: "state", primary_key: "short_name"
+  belongs_to :us_state, class_name: "State", foreign_key: "state", primary_key: "short_name"
 
   def self.in_swing_state
-    joins(:state).merge(State.swing)
+    joins(:us_state).merge(State.swing)
   end
 
   def self.in_uncontested_state
-    joins(:state).merge(State.uncontested)
+    joins(:us_state).merge(State.uncontested)
   end
 
   def self.clinton
