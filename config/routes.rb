@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { confirmations: 'users/confirmations', registrations: 'users' }
 
+  mount_griddler('/messages/forward')
+
   get "about", to: "home#about", as: :about
   get "confirm", to: "home#confirm", as: :confirm
   get "privacy-policy", to: "home#privacy_policy", as: :privacy_policy

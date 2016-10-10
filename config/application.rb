@@ -23,6 +23,7 @@ module StrategicVoting
     # -- all .rb files in that directory are automatically loaded.
     config.assets.precompile += %w(
       vendor
+      foundation_emails
     )
 
     config.active_job.queue_adapter = :sucker_punch

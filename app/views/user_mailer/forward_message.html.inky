@@ -1,0 +1,15 @@
+<container>
+  <row>
+    <columns small="12">
+      <em>The following message was sent to you from <%= @message.from.name %> on MakeMineCount.org</em>
+    </columns>
+    <columns small="12">
+      <%= @message.body %>
+    </columns>
+    <columns small="12">
+      <p>You can reply to this email and it will be forwarded to <%= @message.from.name %> on your behalf.</p>
+      <p>Please note attachments are not supported.</p>
+      <p>It should go without saying: be friendly! We are allies here in the quest to defeat Trump while still supporting 3rd parties!</p>
+    </columns>
+  </row>
+</container>

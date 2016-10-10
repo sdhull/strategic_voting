@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :desired_candidate, presence: true, allow_blank: false
   validate :valid_phone, if: :phone?
   after_validation :report_validation_errors_to_rollbar
+  after_commit :notify_matched, if: :just_matched?, on: :update
 
   belongs_to :match, class_name: "User", optional: true
   belongs_to :us_state, class_name: "State", foreign_key: "state", primary_key: "short_name"
@@ -62,7 +63,19 @@ class User < ApplicationRecord
     end
   end
 
+  def anonymized_email
+    "#{name} <connect+#{uuid}@#{ENV['MAIL_DOMAIN']}>"
+  end
+
   private
+
+  def just_matched?
+    match_id? && match_id_changed?
+  end
+
+  def notify_matched
+    UserMailer.notify_matched(self)
+  end
 
   def unique_email
     if term = email.match(/.*\+/)

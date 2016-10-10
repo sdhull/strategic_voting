@@ -1,0 +1,53 @@
+<style type="text/css">
+</style>
+
+
+
+<wrapper class="header">
+  <container>
+    <row>
+      <columns small="12" large="6">
+        <%= image_tag "logo.png" %>
+      </columns>
+    </row>
+  </container>
+</wrapper>
+
+<container>
+
+  <spacer size="16"></spacer>
+
+  <row>
+    <columns small="12">
+      <h1>We've found you a match!</h1>
+      <p class="lead">Hello <%= @user.name %>, you're well on your way to defeating Donald Trump while supporting third parties!</p>
+      <p>You were matched with <%= @user.match.name %> who is registered to vote in <%= @user.match.state %> and is a <%= @user.match.desired_candidate %> supporter.</p>
+    </columns>
+  </row>
+  <row>
+    <columns small="12" large="6">
+      <callout class="primary">
+        <b>You have agreed to vote for <%= @user.match.desired_candidate %>.</b>
+      </callout>
+    </columns>
+    <columns small="12" large="6">
+      <callout class="secondary">
+        <b><%= @user.match.name %> has agreed to vote for <%= @user.desired_candidate %>.</b>
+      </callout>
+    </columns>
+  </row>
+  <row>
+    <columns small="12">
+      <h5>Good luck this November and don't forget to tell your friends!</h5>
+    </columns>
+  </row>
+  <spacer size="30"></spacer>
+  <row class="footer">
+    <hr />
+    <columns small="12">
+      <p>You can reply to this email and it will be forwarded to <%= @user.match.name %> on your behalf.</p>
+      <p>Please note attachments are not supported.</p>
+      <p>It should go without saying: be friendly! We are allies here in the quest to defeat Trump while still supporting 3rd parties!</p>
+    </columns>
+  </row>
+</container>
