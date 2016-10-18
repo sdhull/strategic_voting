@@ -5,7 +5,7 @@ module ApplicationHelper
       "Gary Johnson",
       "Hillary Clinton",
       "Donald Trump",
-      "Bernie Sanders"
+      "Evan McMullin"
     ]
   end
 

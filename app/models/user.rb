@@ -41,6 +41,14 @@ class User < ApplicationRecord
     match_id?
   end
 
+  def clinton_voter?
+    desired_candidate == "Hillary Clinton"
+  end
+
+  def safe_state?
+    !us_state.swing?
+  end
+
   # Internally store phone numbers as numbers
   def phone=(num)
     num.gsub!(/\D/, '')

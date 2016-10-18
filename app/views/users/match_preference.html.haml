@@ -1,0 +1,25 @@
+.row.columns.content
+  %h2 Match Preference
+
+  .row
+    .columns.small-12.medium-8.large-6.callout.primary
+      What kind of 3rd-party voter would you like to be paired with?
+
+  = form_for(current_user, url: registration_path(:user), method: :put) do |f|
+    .row
+      .columns.small-12.medium-6
+        = f.label :match_preference do
+          Match Preference
+          = f.select :match_preference, ["No Preference", "Jill Stein", "Gary Johnson", "Evan McMullin"], {}, multiple: true
+    .row
+      .columns.small-12.medium-6
+        = f.label :match_strict do
+          = f.check_box :match_strict, {}, "aria-describedby" => "strictHelp"
+          Require match with preferred 3rd Party?
+        %p.help-text.color-dark-gray#strictHelp
+          If you check this box, you will not be matched with a 3rd-party voter in a swing state unless there is an available
+          voter with your preferred party.
+
+    .row.actions
+      .columns.small-12.medium-6
+        = f.submit "Save Preference", class: "button primary large right"

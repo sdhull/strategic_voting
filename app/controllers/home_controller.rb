@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_filter :authenticate_user!, only: [:match_preference, :confirm]
   caches_action :index, :about, :privacy_policy, :terms,
     unless: :user_signed_in?, cache_path: lambda { |c| c.request.original_url }
 
