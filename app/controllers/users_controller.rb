@@ -22,8 +22,12 @@ class UsersController < Devise::RegistrationsController
     end
   end
 
-  def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(user)
     flash[:registered] = true
-    confirm_path
+    if user.clinton_voter? && user.safe_state?
+      match_preference_path
+    else
+      confirm_path
+    end
   end
 end
