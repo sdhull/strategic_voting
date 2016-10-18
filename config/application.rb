@@ -24,6 +24,7 @@ module StrategicVoting
     config.assets.precompile += %w(
       vendor
       foundation_emails
+      base
     )
 
     config.active_job.queue_adapter = :sucker_punch

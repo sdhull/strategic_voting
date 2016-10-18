@@ -1,0 +1,70 @@
+<wrapper class="header">
+  <container>
+    <row>
+      <columns small="12" large="6">
+        <%= image_tag "logo.png" %>
+      </columns>
+    </row>
+  </container>
+</wrapper>
+
+<container>
+
+  <spacer size="16"></spacer>
+
+  <row>
+    <columns small="12">
+      <h1>We're ready to match you to a 3rd-party voter!</h1>
+      <p class="lead">Hello <%= @user.name %>!</p>
+      <p>What kind of 3rd-party voter would you like to be paired with?<p>
+    </columns>
+  </row>
+  <row>
+    <columns small="12" large="3">
+      <%= button_tag href: update_match_preference_url(pref: STEIN), class: "primary radius" do %>
+        A <b><%= STEIN %></b> voter
+      <% end %>
+    </columns>
+    <columns small="12" large="3">
+      <%= button_tag href: update_match_preference_url(pref: JOHNSON), class: "alert radius" do %>
+        A <b><%= JOHNSON %></b> voter
+      <% end %>
+    </columns>
+    <columns small="12" large="3">
+      <%= button_tag href: update_match_preference_url(pref: MCMULLIN), class: "warning radius" do %>
+        An <b><%= MCMULLIN %></b> voter
+      <% end %>
+    </columns>
+    <columns small="12" large="3">
+      <%= button_tag href: update_match_preference_url(pref: "No Preference"), class: "radius" do %>
+        No Preference
+      <% end %>
+    </columns>
+  </row>
+  <row>
+    <columns small="12">
+      <h5>Right now a lot of people have signed up. But we need more, especially from swing states!</h5>
+      <p>
+        This will only make a tangible difference if you also spread the word. So don't forget to get
+        the word out to your social media networks!
+      </p>
+      <row class="collapse large-txt">
+        <columns small="12" large="4">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//www.makeminecount.org">
+            Share on Facebook
+          </a>
+        </columns>
+        <columns small="12" large="4">
+          <a href="https://twitter.com/home?status=Trade%20your%20vote%20to%20%23defeatDonald%20but%20still%20support%20your%203rd%20Party!%20https%3A//www.makeminecount.org">
+            Share on Twitter
+          </a>
+        </columns>
+        <columns small="12" large="4">
+          <a href="https://plus.google.com/share?url=https%3A//www.makeminecount.org">
+            Share on Google Plus
+          </a>
+        </columns>
+      </row>
+    </columns>
+  </row>
+</container>

@@ -1,7 +1,18 @@
 class UsersController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, only: [:create, :update]
+  before_filter :authenticate_user!, only: [:match_preference, :update_match_preference]
 
   def match_preference
+  end
+
+  def update_match_preference
+    pref = params[:pref]
+    if ["No Preference", "Jill Stein", "Gary Johnson", "Evan McMullin"].include? pref
+      current_user.update_attribute :match_preference, pref
+      redirect_to match_preference_path, notice: "Preference recorded!"
+    else
+      redirect_to match_preference_path, error: "Something went wrong, please try again."
+    end
   end
 
   protected
