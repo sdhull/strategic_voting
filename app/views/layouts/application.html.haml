@@ -73,6 +73,7 @@
     -# flash notifications
     - alert_mappings = {"info" => "primary", "notice" => "primary", "error" => "alert"}
     - flash.each do |k, v|
+      - next unless alert_mappings[k].present?
       .callout{class: [alert_mappings[k], k], data: {closable: true}}
         = v
         %button.close-button(aria-label="Dismiss alert" type="button" data-close)
