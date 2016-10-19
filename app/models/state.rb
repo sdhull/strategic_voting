@@ -2,7 +2,7 @@ class State < ActiveRecord::Base
   self.primary_key = "short_name"
 
   def self.for_select
-    all.order(:name).map do |state|
+    where.not(name:  'Fake').order(:name).map do |state|
       [state.name, state.short_name]
     end
   end

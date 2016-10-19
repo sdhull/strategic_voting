@@ -254,3 +254,8 @@
   :slug: district-of-columbia
   :country_id: 233
   :id: 51
+- :short_name: FK
+  :name: Fake
+  :slug: fake
+  :country_id: 233
+  :id: 51

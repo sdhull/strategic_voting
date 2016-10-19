@@ -15,7 +15,31 @@ class UsersController < Devise::RegistrationsController
     end
   end
 
+  def login_type
+  end
+
+  # GET/PATCH /users/:id/finish_signup
+  def finish_signup
+    @user = User.find(params[:id])
+    # authorize! :update, @user
+    if request.patch? && params[:user] #&& params[:user][:email]
+      if @user.update(user_params)
+        @user.skip_reconfirmation!
+        sign_in(@user, :bypass => true)
+        redirect_to after_sign_up_path_for(@user),
+                    notice: 'Your profile was successfully updated.'
+      else
+        @show_errors = true
+      end
+    end
+  end
+
   protected
+
+  def user_params
+    params.require(:user).permit(:state, :desired_candidate, :phone, :email, :name)
+  end
+
   # By default we want to require a password checks on update.
   # You can overwrite this method in your own RegistrationsController.
   def update_resource(resource, params)
