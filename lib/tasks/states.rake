@@ -1,6 +1,7 @@
 namespace :states do
   task create: :environment do
     YAML.load_file("lib/active_hash/data/states.yml").each do |state_hash|
+      next if State.where(state_hash.slice(:short_name, :name, :slug)).exists?
       State.create state_hash.slice(:short_name, :name, :slug)
     end
   end

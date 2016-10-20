@@ -29,6 +29,7 @@ gem 'rollbar'
 gem 'sass-rails', '~> 5.0'
 gem 'sucker_punch'
 gem 'turbolinks', '~> 5'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'uglifier', '>= 1.3.0'
 gem 'validates_email_format_of'
 
@@ -44,4 +45,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :test do
+  gem "rspec-rails"
+  gem "capybara"
+  gem "selenium-webdriver"
+end

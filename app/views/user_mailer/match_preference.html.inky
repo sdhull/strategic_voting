@@ -21,7 +21,7 @@
   </row>
   <row>
     <columns small="12" large="3">
-      <%= button_tag href: update_match_preference_url(pref: STEIN), class: "primary radius" do %>
+      <%= button_tag href: update_match_preference_url(pref: STEIN), class: "success radius" do %>
         A <b><%= STEIN %></b> voter
       <% end %>
     </columns>
