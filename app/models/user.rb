@@ -56,6 +56,10 @@ class User < ApplicationRecord
     super(num)
   end
 
+  def match_preference=(array)
+    super(array.reject(&:blank?))
+  end
+
   def match_with(user)
     User.transaction do
       self.update_attribute :match_id, user.id

@@ -33,6 +33,10 @@
           Phone
           = f.telephone_field :phone, value: number_to_phone(resource.phone)
 
+    - if current_user.clinton_voter? && !current_user.matched?
+      = render "match_preference_fields", f: f
+
+    %hr
     .row
       .columns.small-12.medium-6
         = f.label :password, "New password"
