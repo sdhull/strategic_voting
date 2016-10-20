@@ -1,4 +1,4 @@
-describe "signing up", js: true do
+feature "signing up", js: true do
   before do
     visit root_path
     click_on "Count Me In!"

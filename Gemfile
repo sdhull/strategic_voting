@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.0'
+ruby ENV["CUSTOM_RUBY_VERSION"] || '2.3.0'
 
 gem 'active_hash'
 gem 'actionpack-action_caching', github: "eileencodes/actionpack-action_caching", branch: "upgrade-to-rails-5"

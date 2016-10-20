@@ -1,0 +1,25 @@
+sudo: required
+dist: trusty
+
+language: ruby
+rvm:
+  - 2.2.5
+script:
+  - export RAILS_ENV=test
+  - bundle exec rake db:create db:schema:load db:test:prepare
+  - bundle exec rspec spec --color --format documentation --require rails_helper
+env:
+  - CUSTOM_RUBY_VERSION=2.2.5
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - "wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/2.24/chromedriver_linux64.zip && sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/"
+  - sleep 3
+addons:
+  postgresql: "9.4"
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+      - unzip
