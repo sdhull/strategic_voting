@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   belongs_to :match, class_name: "User", optional: true
   belongs_to :us_state, class_name: "State", foreign_key: "state", primary_key: "short_name"
-
+  has_many :identities, dependent: :destroy
 
   def self.in_swing_state
     joins(:us_state).merge(State.swing)
@@ -90,7 +90,7 @@ class User < ApplicationRecord
       # If no verified email was provided we assign a temporary email and ask the
       # user to verify it on the next step via UsersController.finish_signup
       email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
-      email = auth.info.email if email_is_verified
+      email = auth.info.email
       user = User.where(:email => email).first if email
 
       # Create the user if it's a new registration
@@ -103,7 +103,7 @@ class User < ApplicationRecord
           state: TEMP_STATE,
           desired_candidate: TEMP_CANDIDATE
         )
-        user.skip_confirmation!
+        user.skip_confirmation! if email_is_verified
         user.save!
       end
     end
@@ -116,12 +116,12 @@ class User < ApplicationRecord
     user
   end
 
-  def email_verified?
-    self.email && self.email !~ TEMP_EMAIL_REGEX
+  def default_social_email?
+    self.email && self.email.match(TEMP_EMAIL_REGEX)
   end
 
   def display_email
-    email if email_verified?
+    email unless default_social_email?
   end
 
   private

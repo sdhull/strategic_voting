@@ -45,6 +45,12 @@ img.logo { max-height: 40px; }
     color: $value;
   }
 }
+.fb-button {
+  background-color: $FB-blue;
+  &:hover {
+    background-color: darken($FB-blue, 10%);
+  }
+}
 
 @for $i from 1 through 5 {
   .margin-top-#{$i} {
@@ -65,7 +71,7 @@ img.logo { max-height: 40px; }
 }
 
 .button.xlarge {
-    font-size: 1.75rem;
+  font-size: 1.75rem;
 }
 
 .full-width {

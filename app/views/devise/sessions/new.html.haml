@@ -3,21 +3,32 @@
 
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .row
-      .columns.small-12
-        = f.label :email
-        = f.email_field :email, autofocus: true
-    .row
-      .columns.small-12
-        = f.label :password
-        = f.password_field :password, autocomplete: "off"
+      .columns.small-12.medium-7
+        .row
+          .columns.small-12
+            = f.label :email
+            = f.email_field :email, autofocus: true
+        .row
+          .columns.small-12
+            = f.label :password
+            = f.password_field :password, autocomplete: "off"
 
-    - if devise_mapping.rememberable?
-      .row
-        .columns.small-12
-          = f.check_box :remember_me
-          = f.label :remember_me
-    .row.actions
-      .columns.small-12
-        = f.submit "Log in", class: "button"
+        - if devise_mapping.rememberable?
+          .row
+            .columns.small-12
+              = f.check_box :remember_me
+              = f.label :remember_me
+        .row.actions
+          .columns.small-12
+            = f.submit "Log in", class: "button"
+
+      .columns.small-12.medium-5.margin-top-5
+        .row
+          .columns.small-2
+            .large-txt.margin-top-1.text-center OR
+          .columns.small-10
+            = link_to user_facebook_omniauth_authorize_path, class: "button fb-button large" do
+              = image_tag "fb_icon.svg", class: "small-1 margin-right-2"
+              Sign in with Facebook
 
   = render "devise/shared/links"

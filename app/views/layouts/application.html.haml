@@ -68,7 +68,7 @@
                 %li= link_to "Account", edit_user_registration_path
                 %li= link_to "Sign Out", destroy_user_session_path
           - else
-            %li= link_to "Count Me In!", '/users/login_type', class: "button hide-for-small-only"
+            %li= link_to "Count Me In!", new_user_registration_path, class: "button hide-for-small-only"
 
     -# flash notifications
     - alert_mappings = {"info" => "primary", "notice" => "primary", "error" => "alert", "alert" => "alert"}

@@ -2,6 +2,7 @@ class UsersController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, only: [:create, :update]
   before_filter :authenticate_user!, only: [:match_preference, :update_match_preference]
 
+  # a special case edit page, only for HRC users
   def match_preference
   end
 
@@ -18,20 +19,10 @@ class UsersController < Devise::RegistrationsController
   def login_type
   end
 
-  # GET/PATCH /users/:id/finish_signup
+  # GET /users/:id/finish_signup
+  # a special case edit page
   def finish_signup
     @user = User.find(params[:id])
-    # authorize! :update, @user
-    if request.patch? && params[:user] #&& params[:user][:email]
-      if @user.update(user_params)
-        @user.skip_reconfirmation!
-        sign_in(@user, :bypass => true)
-        redirect_to after_sign_up_path_for(@user),
-                    notice: 'Your profile was successfully updated.'
-      else
-        @show_errors = true
-      end
-    end
   end
 
   protected
