@@ -1,0 +1,13 @@
+.row
+  .columns.small-12.medium-6
+    = f.label :match_preference do
+      Match Preference
+      = f.select :match_preference, ["No Preference", "Jill Stein", "Gary Johnson", "Evan McMullin"], {include_hidden: false}, multiple: true
+.row
+  .columns.small-12.medium-6
+    = f.label :match_strict do
+      = f.check_box :match_strict, {}, "aria-describedby" => "strictHelp"
+      Require match with preferred 3rd Party?
+    %p.help-text.color-dark-gray#strictHelp
+      If you check this box, you will not be matched with a 3rd-party voter in a swing state unless there is an available
+      voter with your preferred party.

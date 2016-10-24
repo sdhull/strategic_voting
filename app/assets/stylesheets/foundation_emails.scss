@@ -1,0 +1,36 @@
+@charset 'utf-8';
+
+@import 'settings';
+$global-gutter: rem-calc(16);
+$button-padding: (
+  tiny: 4px 8px 4px 8px,
+  small: 5px 10px 5px 10px,
+  default: 8px 16px 8px 16px,
+  large: 10px 20px 10px 20px,
+);
+@import "foundation-emails";
+
+.header {
+  background: $dark-gray;
+  .columns {
+    padding-bottom: 0;
+  }
+  p {
+    color: #fff;
+    padding-top: 15px;
+  }
+  .wrapper-inner {
+    padding: 20px;
+  }
+  .container {
+    background: transparent;
+  }
+}
+
+.footer {
+  p {
+    margin: 0;
+    color: $dark-gray;
+    font-style: italic;
+  }
+}

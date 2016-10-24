@@ -14,6 +14,16 @@ ActiveRecord::Schema.define(version: 20161017171426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "to_id",        null: false
+    t.integer  "from_id",      null: false
+    t.text     "subject_line"
+    t.text     "body"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "states", force: :cascade do |t|
     t.string   "short_name",        limit: 2
@@ -52,6 +62,7 @@ ActiveRecord::Schema.define(version: 20161017171426) do
     t.string   "name"
     t.integer  "match_id"
     t.text     "phone"
+    t.uuid     "uuid",                   default: -> { "uuid_generate_v4()" }
     t.json     "match_preference"
     t.boolean  "match_strict"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree

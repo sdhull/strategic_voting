@@ -18,7 +18,7 @@
     %meta(property="og:image" content="#{image_url 'hero-combined.jpg'}")
     %meta(property="og:image:width" content="1500")
     %meta(property="og:image:height" content="989")
-    %meta(property="og:description" content="Using strategic vote swapping to simultaneously defeat Trump while supporting third parties.")
+    %meta(property="og:description" content="Using strategic vote—swapping to simultaneously defeat Trump while supporting third parties.")
 
     - if Rails.env.production?
       -# Facebook Pixel Code
@@ -71,7 +71,7 @@
             %li= link_to "Count Me In!", new_user_registration_path, class: "button hide-for-small-only"
 
     -# flash notifications
-    - alert_mappings = {"info" => "primary", "notice" => "primary", "error" => "alert"}
+    - alert_mappings = {"info" => "primary", "notice" => "primary", "error" => "alert", "alert" => "alert"}
     - flash.each do |k, v|
       - next unless alert_mappings[k].present?
       .callout{class: [alert_mappings[k], k], data: {closable: true}}
