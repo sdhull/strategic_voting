@@ -120,6 +120,10 @@ class User < ApplicationRecord
     self.email && self.email.match(TEMP_EMAIL_REGEX)
   end
 
+  def default_social_data?
+    state == TEMP_STATE || state == TEMP_CANDIDATE || default_social_email?
+  end
+
   def display_email
     email unless default_social_email?
   end

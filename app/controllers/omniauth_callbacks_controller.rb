@@ -13,6 +13,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def after_sign_in_path_for(resource)
     sign_in resource
-    finish_signup_path(resource)
+    if resource.default_social_data?
+      finish_signup_path(resource)
+    else
+      root_path
+    end
   end
 end
