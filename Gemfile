@@ -14,7 +14,7 @@ gem 'foundation-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'haml'
-gem 'inky-rb', require: 'inky'
+gem 'inky-rb', require: 'inky', github: "sdhull/inky-rb", branch: "fix-heroku"
 gem 'griddler'
 gem 'griddler-mailgun'
 gem 'newrelic_rpm'
