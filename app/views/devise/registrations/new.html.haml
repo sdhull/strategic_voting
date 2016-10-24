@@ -6,6 +6,21 @@
 .row.columns.content
   %h2 Get Started
 
+  .row
+    .columns.small-12.medium-centered.medium-4.margin-bottom-2
+      = link_to user_facebook_omniauth_authorize_path, class: "button fb-button large" do
+        = image_tag "fb_icon.svg", class: "small-1 margin-right-2"
+        Get Started With Facebook
+
+  .row
+    .columns.medium-centered.medium-10
+      .row
+        .medium-5.columns
+          %hr
+        .medium-2.columns.text-center.margin-bottom-4.large-txt or
+        .medium-5.columns
+          %hr
+
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     .row
       .columns.small-12
@@ -59,5 +74,6 @@
         = f.submit "Create Account", class: "button primary radius large expanded", "aria-describedby" => "submitHelp"
         %p.text-center.help-text#submitHelp
           By clicking "Create Account" you agree to our #{link_to "Terms of Service", terms_of_service_path}.
+
 
   = render "devise/shared/links"

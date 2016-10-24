@@ -2,6 +2,7 @@ class UsersController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, only: [:create, :update]
   before_filter :authenticate_user!, only: [:match_preference, :update_match_preference]
 
+  # a special case edit page, only for HRC users
   def match_preference
   end
 
@@ -15,7 +16,21 @@ class UsersController < Devise::RegistrationsController
     end
   end
 
+  def login_type
+  end
+
+  # GET /users/:id/finish_signup
+  # a special case edit page
+  def finish_signup
+    @user = User.find(params[:id])
+  end
+
   protected
+
+  def user_params
+    params.require(:user).permit(:state, :desired_candidate, :phone, :email, :name)
+  end
+
   # By default we want to require a password checks on update.
   # You can overwrite this method in your own RegistrationsController.
   def update_resource(resource, params)

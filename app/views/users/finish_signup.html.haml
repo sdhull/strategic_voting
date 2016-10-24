@@ -1,0 +1,37 @@
+.row.columns.content
+  %h1 Select Preferences
+  = form_for(@user, url: registration_path(:user)) do |f|
+    - if @user.errors.any?
+      .row
+        .columns.small-12
+          = devise_error_messages!
+    .row
+      .columns.small-12.medium-6
+        = f.label :name do
+          Name
+          = f.text_field :name, autofocus: true, placeholder: "Steve H, mr robot, Mz Green, etc", "aria-describedby" => "nameHelp"
+        %p.help-text#nameHelp This will be public, how you are identified on the site.
+
+      - if @user.default_social_email?
+        .columns.small-12.medium-6
+          = f.label :email do
+            Email
+            = f.email_field :email, "aria-describedby" => "emailHelp", value: @user.display_email
+          %p.help-text#emailHelp This will be private. And we will never spam you or sell your info.
+
+    .row.callout.primary
+      .columns.small-12.medium-6
+        = f.label :state do
+          State
+          = f.select :state, State.for_select
+
+      .columns.small-12.medium-6
+        = f.label :desired_candidate do
+          Who did you want to vote for?
+          = f.select :desired_candidate, candidates, prompt: "Choose a Candidate"
+
+    .row.actions
+      .columns.small-12
+        = f.submit "Finish Signup", class: "button primary radius large expanded", "aria-describedby" => "submitHelp"
+        %p.text-center.help-text#submitHelp
+          By clicking "Finish Signup" you agree to our #{link_to "Terms of Service", terms_of_service_path}.

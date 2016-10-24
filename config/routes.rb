@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  devise_for :users, controllers: { confirmations: 'users/confirmations', registrations: 'users' }
+  devise_for :users, controllers: { confirmations: 'users/confirmations',
+                                    registrations: 'users',
+                                    omniauth_callbacks: 'omniauth_callbacks' }
 
   mount_griddler('/messages/forward')
 
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "match-preference", to: "users#match_preference", as: :match_preference
     get "update-match-preference", to: "users#update_match_preference", as: :update_match_preference
+    get '/users/:id/finish_signup',  to: 'users#finish_signup', as: :finish_signup
   end
   root to: "home#index"
 end

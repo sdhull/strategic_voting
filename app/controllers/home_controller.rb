@@ -5,7 +5,9 @@ class HomeController < ApplicationController
 
   def index
     if user_signed_in?
-      if !current_user.confirmed?
+      if current_user.default_social_email?
+        redirect_to finish_signup_path(current_user)
+      elsif !current_user.confirmed?
         redirect_to confirm_path
       elsif current_user.matched?
         @match = current_user.match
