@@ -44,7 +44,16 @@ class UsersController < Devise::RegistrationsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:state, :desired_candidate, :name, :phone])
     devise_parameter_sanitizer.permit(:account_update) do |user|
-      user.permit :state, :desired_candidate, :name, :phone, :match_strict, match_preference: []
+      user.permit :current_password,
+        :desired_candidate,
+        :email,
+        :match_strict,
+        :name,
+        :password,
+        :password_confirmation,
+        :phone,
+        :state,
+        match_preference: []
     end
   end
 
