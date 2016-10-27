@@ -135,7 +135,7 @@ class User < ApplicationRecord
   end
 
   def notify_matched
-    UserMailer.notify_matched(self)
+    MailerJob.perform_later UserMailer, :notify_matched, self
   end
 
   def unique_email
