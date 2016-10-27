@@ -8,6 +8,6 @@ class Message < ApplicationRecord
   after_create :send_message
 
   def send_message
-    MailerJob.perform_later UserMailer, :forward_message, self
+    MailerJob.perform_later "UserMailer", "forward_message", self
   end
 end
