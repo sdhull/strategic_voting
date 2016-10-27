@@ -4,6 +4,7 @@ class UserMailerPreview < ActionMailer::Preview
   end
 
   def forward_message
+    UserMailer.forward_message(Message.first)
   end
 
   def match_preference

@@ -1,11 +1,21 @@
+<wrapper class="header">
+  <container>
+    <row>
+      <columns small="12">
+        <em>The following message was sent to you from <%= @message.from.name %> on MakeMineCount.org</em>
+      </columns>
+    </row>
+  </container>
+</wrapper>
+
 <container>
+  <spacer size="16"></spacer>
   <row>
     <columns small="12">
-      <em>The following message was sent to you from <%= @message.from.name %> on MakeMineCount.org</em>
+      <%= simple_format @message.body %>
     </columns>
-    <columns small="12">
-      <%= @message.body %>
-    </columns>
+  </row>
+  <row>
     <columns small="12">
       <p>You can reply to this email and it will be forwarded to <%= @message.from.name %> on your behalf.</p>
       <p>Please note attachments are not supported.</p>
