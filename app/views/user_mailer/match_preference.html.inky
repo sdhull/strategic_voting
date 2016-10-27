@@ -2,7 +2,7 @@
   <container>
     <row>
       <columns small="12" large="6">
-        <%= image_tag "logo.png" %>
+        <%= image_tag image_url("logo.png") %>
       </columns>
     </row>
   </container>
