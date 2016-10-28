@@ -38,6 +38,8 @@ gem 'validates_email_format_of'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'dotenv-rails'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development do
