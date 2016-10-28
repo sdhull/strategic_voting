@@ -1,6 +1,6 @@
 class UsersController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, only: [:create, :update]
-  before_action :authenticate_scope!, only: [:match_preference, :update_match_preference]
+  before_action :authenticate_scope!, only: [:match_preference, :update_match_preference, :edit, :update, :destroy]
 
   # a special case edit page, only for HRC users
   def match_preference
