@@ -1,11 +1,11 @@
 def email_params
   {
     "domain"=>"staging-mg.makeminecount.org",
-    "From"=>"Steve Hull <p.witty@gmail.com>",
-    "X-Envelope-From"=>"<p.witty@gmail.com>",
+    "From"=>"Steve Hull <notarealemail@gmail.com>",
+    "X-Envelope-From"=>"<notarealemail@gmail.com>",
     "To"=>"Steve H <connect+f32e22fd-e822-4e18-970c-8d0e23863dd1@staging-mg.makeminecount.org>",
     "subject"=>"Re: You've been matched on MakeMineCount.org!",
-    "from"=>"Steve Hull <p.witty@gmail.com>",
+    "from"=>"Steve Hull <notarealemail@gmail.com>",
     "X-Received"=>"by 10.36.92.193 with SMTP id q184mr9300538itb.30.1477557366019; Thu, 27 Oct 2016 01:36:06 -0700 (PDT)",
     "In-Reply-To"=>"<5811b6ede5cfc_93fc45c5c0778700cd@d00e9b1b-615e-4460-9915-0cb1879f9ad0.mail>",
     "Date"=>"Thu, 27 Oct 2016 01:35:25 -0700",
@@ -13,7 +13,7 @@ def email_params
     "Mime-Version"=>"1.0",
     "Received"=>"by 10.64.159.34 with HTTP; Thu, 27 Oct 2016 01:35:25 -0700 (PDT)",
     "recipient"=>"connect+f32e22fd-e822-4e18-970c-8d0e23863dd1@staging-mg.makeminecount.org",
-    "sender"=>"p.witty@gmail.com",
+    "sender"=>"notarealemail@gmail.com",
     "X-Mailgun-Incoming"=>"Yes",
     "X-Gm-Message-State"=>"ABUngvfG5sWhiMxHWwo1Ptx+TkQJcZIpu8Cxcygo4DrpV6K+a3u+06BoONwZkdjQXe6N4JQUMrYi6nB7XpqdYg==",
     "References"=>"<5811b6ede5cfc_93fc45c5c0778700cd@d00e9b1b-615e-4460-9915-0cb1879f9ad0.mail>",

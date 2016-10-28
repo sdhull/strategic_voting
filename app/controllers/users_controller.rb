@@ -1,6 +1,6 @@
 class UsersController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, only: [:create, :update]
-  before_filter :authenticate_user!, only: [:match_preference, :update_match_preference]
+  before_action :authenticate_user!, only: [:match_preference, :update_match_preference]
 
   # a special case edit page, only for HRC users
   def match_preference
@@ -9,8 +9,12 @@ class UsersController < Devise::RegistrationsController
   def update_match_preference
     pref = params[:pref]
     if ["No Preference", "Jill Stein", "Gary Johnson", "Evan McMullin"].include? pref
-      current_user.update_attribute :match_preference, pref
-      redirect_to match_preference_path, notice: "Preference recorded!"
+      if current_user.update_attribute :match_preference, pref
+        current_user.find_a_match
+        redirect_to root_path, notice: "Preference recorded!"
+      else
+        redirect_to match_preference_path, error: "Something went wrong, please try again."
+      end
     else
       redirect_to match_preference_path, error: "Something went wrong, please try again."
     end

@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :desired_candidate, presence: true, allow_blank: false
   validate :valid_phone, if: :phone?
   after_validation :report_validation_errors_to_rollbar
-  after_commit :notify_matched, if: :just_matched?, on: :update
+  after_update :notify_matched, if: :just_matched?
 
   belongs_to :match, class_name: "User", optional: true
   belongs_to :us_state, class_name: "State", foreign_key: "state", primary_key: "short_name"
@@ -24,11 +24,11 @@ class User < ApplicationRecord
   end
 
   def self.clinton
-    where(desired_candidate: "Hillary Clinton")
+    where(desired_candidate: CLINTON)
   end
 
   def self.third_party
-    where(desired_candidate: ["Jill Stein", "Gary Johnson"])
+    where(desired_candidate: [STEIN, JOHNSON, MCMULLIN])
   end
 
   def self.unmatched
@@ -44,7 +44,7 @@ class User < ApplicationRecord
   end
 
   def clinton_voter?
-    desired_candidate == "Hillary Clinton"
+    desired_candidate == CLINTON
   end
 
   def safe_state?
@@ -58,13 +58,22 @@ class User < ApplicationRecord
   end
 
   def match_preference=(array)
+    array = Array(array)
     super(array.reject(&:blank?))
   end
 
   def match_with(user)
+    return if user.blank? || user.match_id? || self.match_id?
+
+    user.match = self
+    self.match = user
+    saved = true
     User.transaction do
-      self.update_attribute :match_id, user.id
-      user.update_attribute :match_id, self.id
+      saved = saved && self.save
+      saved = saved && user.save
+      unless saved
+        raise ActiveRecord::Rollback, "setting match_id failed"
+      end
     end
   end
 
@@ -128,14 +137,29 @@ class User < ApplicationRecord
     email unless default_social_email?
   end
 
-  private
+  def find_a_match
+    return if match_id?
 
-  def just_matched?
-    match_id? && match_id_changed?
+    if clinton_voter? && safe_state?
+      if match_preference
+        if match_preference == "No Preference"
+          swing_voter = User.unmatched.in_swing_state.third_party.first
+        else
+          swing_voter = User.unmatched.in_swing_state.where(desired_candidate: match_preference).first
+        end
+        match_with swing_voter
+      end
+    end
   end
 
   def notify_matched
     MailerJob.perform_later "UserMailer", "notify_matched", self
+  end
+
+  private
+
+  def just_matched?
+    match_id? && match_id_changed?
   end
 
   def unique_email
