@@ -75,6 +75,7 @@ class User < ApplicationRecord
         raise ActiveRecord::Rollback, "setting match_id failed"
       end
     end
+    saved
   end
 
   def anonymized_email

@@ -34,6 +34,7 @@ describe "a Clinton voter setting their match preference from the link in email"
       expect(user1.reload.match).to eq nil
       expect(user1.match_preference).to eq [STEIN]
       expect(user2.reload.match).to eq nil
+      expect(response).to redirect_to(match_preference_path)
     end
   end
 end

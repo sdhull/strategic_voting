@@ -10,8 +10,11 @@ class UsersController < Devise::RegistrationsController
     pref = params[:pref]
     if ["No Preference", "Jill Stein", "Gary Johnson", "Evan McMullin"].include? pref
       if current_user.update_attribute :match_preference, pref
-        current_user.find_a_match
-        redirect_to root_path, notice: "Preference recorded!"
+        if current_user.find_a_match
+          redirect_to root_path, notice: "Preference recorded!"
+        else
+          redirect_to match_preference_path, error: "Preference recorded!"
+        end
       else
         redirect_to match_preference_path, error: "Something went wrong, please try again."
       end
