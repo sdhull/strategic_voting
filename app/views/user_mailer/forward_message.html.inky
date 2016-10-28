@@ -15,7 +15,8 @@
       <%= simple_format @message.body %>
     </columns>
   </row>
-  <row>
+  <row class="footer">
+    <hr />
     <columns small="12">
       <p>You can reply to this email and it will be forwarded to <%= @message.from.name %> on your behalf.</p>
       <p>Please note attachments are not supported.</p>

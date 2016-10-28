@@ -2,7 +2,8 @@
   <container>
     <row>
       <columns small="12" large="6">
-        <%= image_tag image_url("logo.png") %>
+        <% host = "#{Rails.env.production? ? 'https://' : 'http://'}#{ENV['PUBLIC_DOMAIN']}" %>
+        <%= image_tag image_url("logo.png", host: host) %>
       </columns>
     </row>
   </container>

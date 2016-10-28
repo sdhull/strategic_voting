@@ -78,6 +78,10 @@ RSpec.configure do |config|
     Rake::Task["states:update_stats"].invoke
   end
 
+  config.after(:all, type: "feature") do
+    User.destroy_all
+  end
+
   config.before do
     ActionMailer::Base.deliveries.clear
   end
