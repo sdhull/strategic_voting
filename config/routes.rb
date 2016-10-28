@@ -5,7 +5,7 @@ Rails.application.routes.draw do
                                     registrations: 'users',
                                     omniauth_callbacks: 'omniauth_callbacks' }
 
-  mount_griddler('/messages/forward')
+  post "/messages/forward", to: "messages#incoming", as: :email_processor
 
   get "about", to: "home#about", as: :about
   get "confirm", to: "home#confirm", as: :confirm
