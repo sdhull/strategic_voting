@@ -39,6 +39,14 @@ class User < ApplicationRecord
     where("match_id IS NOT NULL")
   end
 
+  def self.confirmed
+    where("confirmed_at IS NOT NULL")
+  end
+
+  def self.unconfirmed
+    where(confirmed_at: nil)
+  end
+
   def matched?
     match_id?
   end
@@ -144,9 +152,9 @@ class User < ApplicationRecord
     if clinton_voter? && safe_state?
       if match_preference
         if match_preference == "No Preference"
-          swing_voter = User.unmatched.in_swing_state.third_party.first
+          swing_voter = User.confirmed.unmatched.in_swing_state.third_party.first
         else
-          swing_voter = User.unmatched.in_swing_state.where(desired_candidate: match_preference).first
+          swing_voter = User.confirmed.unmatched.in_swing_state.where(desired_candidate: match_preference).first
         end
         match_with swing_voter
       end
