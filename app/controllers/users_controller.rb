@@ -41,7 +41,7 @@ class UsersController < Devise::RegistrationsController
   # By default we want to require a password checks on update.
   # You can overwrite this method in your own RegistrationsController.
   def update_resource(resource, params)
-    if params[:password].present?
+    if params[:password].present? || params[:current_password].present? || params[:password_confirmation].present?
       resource.update_with_password(params)
     else
       resource.update_attributes(params)
