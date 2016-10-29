@@ -16,7 +16,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if resource.default_social_data?
       finish_signup_path(resource)
     else
-      root_path
+      stored_location_for(resource) || root_path
     end
   end
 end
