@@ -10,7 +10,6 @@ class User < ApplicationRecord
   validates :desired_candidate, presence: true, allow_blank: false
   validate :valid_phone, if: :phone?
   after_validation :report_validation_errors_to_rollbar
-  after_update :notify_matched, if: :just_matched?
 
   belongs_to :match, class_name: "User", optional: true
   belongs_to :us_state, class_name: "State", foreign_key: "state", primary_key: "short_name"
@@ -83,6 +82,10 @@ class User < ApplicationRecord
       unless saved
         raise ActiveRecord::Rollback, "setting match_id failed"
       end
+    end
+    if saved
+      user.notify_matched
+      self.notify_matched
     end
     saved
   end
@@ -171,10 +174,6 @@ class User < ApplicationRecord
   end
 
   private
-
-  def just_matched?
-    match_id? && match_id_changed?
-  end
 
   def unique_email
     if term = email.match(/.*\+/)
