@@ -1,6 +1,7 @@
 class UserMailer < ApplicationMailer
   def notify_matched(user)
     @user = user
+    user.match(true) # force the match to be reloaded
     mail(to: @user.email, from: user.match.anonymized_email, subject: "You've been matched on MakeMineCount.org!")
   end
 
