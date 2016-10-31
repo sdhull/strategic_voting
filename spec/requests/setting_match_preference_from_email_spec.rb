@@ -4,12 +4,14 @@ describe "a Clinton voter setting their match preference from the link in email"
   end
 
   before do
+    user1.confirm
+    user2.confirm
     sign_in user1
   end
 
   context "when there's an appropriate match" do
     let!(:user2) do
-      User.create email: "test@example.com", password: "password", state: "OH", desired_candidate: STEIN, name: "Testy Tester"
+      User.create email: "test@blahblahblah289312.com", password: "password", state: "OH", desired_candidate: STEIN, name: "Testy Tester"
     end
 
     it "matches them & sets their preference" do
@@ -25,7 +27,7 @@ describe "a Clinton voter setting their match preference from the link in email"
 
   context "when there's no appropriate match" do
     let!(:user2) do
-      User.create email: "test@example.com", password: "password", state: "OH", desired_candidate: JOHNSON, name: "Testy Tester"
+      User.create email: "test@blahblahblah289312.com", password: "password", state: "OH", desired_candidate: JOHNSON, name: "Testy Tester"
     end
 
     it "just sets their match preference" do

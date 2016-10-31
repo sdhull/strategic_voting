@@ -5,7 +5,7 @@ describe "incoming email parsing" do
     User.create email: "notarealemail@gmail.com", password: "password", state: "CA", desired_candidate: CLINTON, name: "Steve H"
   end
   let!(:to) do
-    User.create email: "test@example.com", password: "password", state: "OH", desired_candidate: STEIN, name: "Testy Tester", uuid: "f32e22fd-e822-4e18-970c-8d0e23863dd1"
+    User.create email: "test@blahblahblah289312.com", password: "password", state: "OH", desired_candidate: STEIN, name: "Testy Tester", uuid: "f32e22fd-e822-4e18-970c-8d0e23863dd1"
   end
 
   it "creates a new message" do

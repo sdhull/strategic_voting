@@ -40,7 +40,7 @@ feature "signing up", js: true do
 
   scenario "as a 3rd-party voter in a swing state" do
     fill_in "Name", with: "Stein Supporter"
-    fill_in "Email", with: "green@example.com"
+    fill_in "Email", with: "green@blahblahblah289312.com"
     fill_in "Phone", with: "510-555-1212"
     fill_in "user_password", with: "password"
     fill_in "Password Confirmation", with: "password"
@@ -54,7 +54,7 @@ feature "signing up", js: true do
 
     u = User.last
     expect(u.name).to eq "Stein Supporter"
-    expect(u.email).to eq "green@example.com"
+    expect(u.email).to eq "green@blahblahblah289312.com"
     expect(u.phone).to eq "5105551212"
     expect(u.state).to eq "OH"
     expect(u.desired_candidate).to eq "Jill Stein"
