@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :email, email_format: {message: "please enter a valid email."}
   validate :unique_email
+  validate :not_burner_email
   validates :desired_candidate, presence: true, allow_blank: false
   validate :valid_phone, if: :phone?
   after_validation :report_validation_errors_to_rollbar
@@ -165,6 +166,10 @@ class User < ApplicationRecord
     MailerJob.perform_later "UserMailer", "notify_matched", self
   end
 
+  def burner_emails
+    Rails.cache.fetch("burner-emails") { open("https://raw.githubusercontent.com/andreis/disposable/master/domains.txt").read }
+  end
+
   private
 
   def just_matched?
@@ -179,6 +184,15 @@ class User < ApplicationRecord
           errors.add :email, "has been taken."
         end
       end
+    end
+  end
+
+  def not_burner_email
+    return unless email?
+
+    addr = Mail::Address.new(email)
+    if burner_emails.match Regexp.new("^#{addr.domain}")
+      errors.add :email, "cannot be a temporary address."
     end
   end
 
