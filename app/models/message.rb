@@ -5,7 +5,7 @@ class Message < ApplicationRecord
   validates :to, presence: true
   validates :from, presence: true
 
-  after_create :send_message
+  after_commit :send_message, on: :create
 
   def send_message
     MailerJob.perform_later "UserMailer", "forward_message", self
