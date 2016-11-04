@@ -44,6 +44,9 @@ class UsersController < Devise::RegistrationsController
     if params[:password].present? || params[:current_password].present? || params[:password_confirmation].present?
       resource.update_with_password(params)
     else
+      params.delete :password
+      params.delete :current_password
+      params.delete :password_confirmation
       resource.update_attributes(params)
     end
   end
