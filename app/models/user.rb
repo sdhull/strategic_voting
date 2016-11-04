@@ -19,7 +19,7 @@ class User < ApplicationRecord
     joins(:us_state).merge(State.swing)
   end
 
-  def self.in_uncontested_state
+  def self.in_safe_state
     joins(:us_state).merge(State.uncontested)
   end
 
@@ -45,6 +45,14 @@ class User < ApplicationRecord
 
   def self.unconfirmed
     where(confirmed_at: nil)
+  end
+
+  def unmatched_swing
+    unmatched.in_swing_state.third_party.confirmed
+  end
+
+  def unmatched_safe
+    unmatched.in_safe_state.clinton.confirmed
   end
 
   def matched?
@@ -155,7 +163,7 @@ class User < ApplicationRecord
 
     if clinton_voter? && safe_state?
       if match_preference
-        if match_preference == "No Preference"
+        if match_preference == "No Preference" || match_preference == [""] || match_preference.blank?
           swing_voter = User.confirmed.unmatched.in_swing_state.third_party.first
         else
           swing_voter = User.confirmed.unmatched.in_swing_state.where(desired_candidate: match_preference).first
