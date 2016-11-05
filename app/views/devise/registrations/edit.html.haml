@@ -34,10 +34,10 @@
           = f.telephone_field :phone, value: number_to_phone(resource.phone)
 
     - if current_user.desired_candidate == "Bernie Sanders" || current_user.desired_candidate.blank?
-        .columns.small-12.medium-6
-          = f.label :desired_candidate do
-            Who did you want to vote for?
-            = f.select :desired_candidate, candidates, prompt: "Choose a Candidate"
+      .columns.small-12.medium-6
+        = f.label :desired_candidate do
+          Who did you want to vote for?
+          = f.select :desired_candidate, candidates, prompt: "Choose a Candidate"
 
     - if current_user.clinton_voter? && !current_user.matched?
       = render "match_preference_fields", f: f
