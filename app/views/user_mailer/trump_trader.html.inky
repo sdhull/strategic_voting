@@ -1,0 +1,48 @@
+<wrapper class="header">
+  <container>
+    <row>
+      <columns small="12" large="6">
+        <% host = "#{Rails.env.production? ? 'https://' : 'http://'}#{ENV['PUBLIC_DOMAIN']}" %>
+        <%= image_tag image_url("logo.png", host: host) %>
+      </columns>
+    </row>
+  </container>
+</wrapper>
+
+<container>
+
+  <spacer size="16"></spacer>
+
+  <row>
+    <columns small="12">
+      <h1>Click to get matched!</h1>
+      <p class="lead">Hello <%= @user.name %>, you're well on your way to defeating Donald Trump while supporting third parties!</p>
+      <p>Make Mine Count has run out of third-party voters, but <a href="http://TrumpTraders.org/trade/?utm_campaign=mmc&user_id=<%= @user.id %>">TrumpTraders.org</a>
+      has literally thousands of third-party voters that you can be matched with instantly.</p>
+
+      <p>Just log into <a href="http://TrumpTraders.org/trade/?utm_campaign=mmc&user_id=<%= @user.id %>">TrumpTraders.org</a>, and within
+      seconds you will be matched with a third party voter to swap with.</p>
+    </columns>
+  </row>
+  <row>
+    <columns small="12" large="6">
+      <center>
+        <%= button_tag href: "http://TrumpTraders.org/trade/?utm_campaign=mmc&user_id=#{@user.id}", class: "success radius large" do %>
+          Get Matched Now!
+        <% end %>
+      </center>
+    </columns>
+  </row>
+  <row>
+    <columns small="12">
+      <b>Good luck and don't forget to tell your friends!</b>
+    </columns>
+  </row>
+  <spacer size="30"></spacer>
+  <row class="footer">
+    <hr />
+    <columns small="12">
+      <p>It should go without saying: be friendly! We are allies here in the quest to defeat Trump while still supporting 3rd parties!</p>
+    </columns>
+  </row>
+</container>

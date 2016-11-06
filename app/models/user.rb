@@ -177,6 +177,10 @@ class User < ApplicationRecord
     MailerJob.perform_later "UserMailer", "notify_matched", self
   end
 
+  def send_trump_trader_email
+    MailerJob.perform_later "UserMailer", "trump_trader", self
+  end
+
   def burner_emails
     Rails.cache.fetch("burner-emails") { open("https://raw.githubusercontent.com/andreis/disposable/master/domains.txt").read }
   end

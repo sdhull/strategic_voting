@@ -10,4 +10,8 @@ class UserMailerPreview < ActionMailer::Preview
   def match_preference
     UserMailer.match_preference(User.first)
   end
+
+  def trump_trader
+    UserMailer.trump_trader(User.first)
+  end
 end

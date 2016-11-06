@@ -11,4 +11,10 @@ namespace :matching do
     end
     puts "--------- Successfully matched #{actual} swing state voters"
   end
+
+  task :trump_trader => :environment do
+    users = User.unmatched.in_safe_state.clinton.confirmed
+    users.each(&:send_trump_trader_email)
+    puts "Sent emails to #{users.count} users"
+  end
 end
