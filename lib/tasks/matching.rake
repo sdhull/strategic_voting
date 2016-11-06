@@ -1,5 +1,5 @@
 namespace :matching do
-  task :match do
+  task match: :environment do
     possible = User.unmatched_swing.count
     actual = 0
     puts "--------- About to attempt to match #{possible} swing state voters"

@@ -47,11 +47,11 @@ class User < ApplicationRecord
     where(confirmed_at: nil)
   end
 
-  def unmatched_swing
+  def self.unmatched_swing
     unmatched.in_swing_state.third_party.confirmed
   end
 
-  def unmatched_safe
+  def self.unmatched_safe
     unmatched.in_safe_state.clinton.confirmed
   end
 
