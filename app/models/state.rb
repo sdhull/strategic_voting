@@ -12,7 +12,7 @@ class State < ActiveRecord::Base
   end
 
   def self.uncontested
-    order("optimistic_win_p - pessimistic_win_p DESC").where("win_margin < -5 AND win_margin > 5")
+    order("optimistic_win_p - pessimistic_win_p DESC").where("win_margin < -5 OR win_margin > 5")
   end
 
   def swing?
