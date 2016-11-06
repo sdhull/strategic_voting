@@ -14,4 +14,9 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: user.email, subject: "Who do you want to swap your vote for? [makeminecount.org]")
   end
+
+  def trump_trader(user)
+    @user = user
+    mail(to: user.email, subject: "Get matched with a third party voter! [makeminecount.org]")
+  end
 end
