@@ -20,7 +20,7 @@
       <p>Make Mine Count has run out of third-party voters, but <a href="http://TrumpTraders.org/trade/?utm_campaign=mmc&user_id=<%= @user.id %>">TrumpTraders.org</a>
       has literally thousands of third-party voters that you can be matched with instantly.</p>
 
-      <p>Just log into <a href="http://TrumpTraders.org/trade/?utm_campaign=mmc&user_id=<%= @user.id %>">TrumpTraders.org</a>, and within
+      <p>Just log into <a href="https://trumptraders.org/trade/?utm_campaign=mmc&user_id=<%= @user.id %>">TrumpTraders.org</a>, and within
       seconds you will be matched with a third party voter to swap with.</p>
     </columns>
   </row>
