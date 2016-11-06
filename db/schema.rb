@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019211523) do
+ActiveRecord::Schema.define(version: 20161106233051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20161019211523) do
     t.integer  "win_margin"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.float    "chance_to_tip"
     t.index ["short_name"], name: "index_states_on_short_name", unique: true, using: :btree
   end
 

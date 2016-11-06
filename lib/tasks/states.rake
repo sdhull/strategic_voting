@@ -17,4 +17,14 @@ namespace :states do
       state.save
     end
   end
+
+  task stats_538: :environment do
+    require 'csv'
+    CSV.open("lib/assets/538_stats.csv", headers: true).each do |probs|
+      state = State.find_by_name probs["state"]
+      state.win_margin = probs["win_margin"]
+      state.chance_to_tip = probs["chance_to_tip"]
+      state.save
+    end
+  end
 end

@@ -8,14 +8,14 @@ class State < ActiveRecord::Base
   end
 
   def self.swing
-    where("optimistic_win_p - pessimistic_win_p >= 10")
+    order("chance_to_tip DESC").where("win_margin >= -5 AND win_margin <= 5 AND chance_to_tip >= 2")
   end
 
   def self.uncontested
-    where("optimistic_win_p - pessimistic_win_p < 10")
+    order("optimistic_win_p - pessimistic_win_p DESC").where("win_margin < -5 AND win_margin > 5")
   end
 
   def swing?
-    optimistic_win_p - pessimistic_win_p > 10
+    win_margin >= -5 && win_margin <= 5 && chance_to_tip >= 2
   end
 end
