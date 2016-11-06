@@ -28,7 +28,7 @@
     <columns small="12" large="6">
       <center>
         <%= button_tag href: "http://TrumpTraders.org/trade/?utm_campaign=mmc&user_id=#{@user.id}", class: "success radius large" do %>
-          Get Matched Now!
+          Visit TrumpTraders!
         <% end %>
       </center>
     </columns>
