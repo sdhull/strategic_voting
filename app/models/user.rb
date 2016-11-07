@@ -178,7 +178,8 @@ class User < ApplicationRecord
   end
 
   def send_trump_trader_email
-    MailerJob.perform_later "UserMailer", "trump_trader", self
+    #MailerJob.perform_later "UserMailer", "trump_trader", self
+    UserMailer.trump_trader self
   end
 
   def burner_emails
